@@ -1,29 +1,28 @@
-/*
-  DigitalReadSerial
+// Example: Digital Read Serial
+// Last update: Dec 23, 2025
+//
+// DESCRIPTION
+// Reads a digital input on pin 2, prints the result to the Serial Monitor
+// Connect a tactile push button with one side to D2, and pulled to ground (GND) through a 10kOhm resistor.
+// Connect the other side to 5V. When the button is pressed the digital pin D2 is pulled High.
+// When the button is released the pin D2 is pulled back to Low.
 
-  Reads a digital input on pin 2, prints the result to the Serial Monitor
-
-  This example code is in the public domain.
-
-  https://docs.arduino.cc/built-in-examples/basics/DigitalReadSerial/
-*/
-
-// digital pin 2 has a pushbutton attached to it. Give it a name:
+// Digital pin 2 has a pushbutton attached to it. Give it a name:
 int pushButton = 2;
 
-// the setup routine runs once when you press reset:
+// The setup routine runs once when you press reset:
 void setup() {
-  // initialize serial communication at 9600 bits per second:
+  // Initialize serial communication at 9600 bits per second:
   Serial.begin(9600);
-  // make the pushbutton's pin an input:
+  //Make the pushbutton's pin an input:
   pinMode(pushButton, INPUT);
 }
 
-// the loop routine runs over and over again forever:
+// The loop routine runs over and over again forever:
 void loop() {
-  // read the input pin:
+  // Read the input pin:
   int buttonState = digitalRead(pushButton);
-  // print out the state of the button:
+  // Print out the state of the button:
   Serial.println(buttonState);
-  delay(1);  // delay in between reads for stability
+  delay(1);  // Delay in between reads for stability
 }

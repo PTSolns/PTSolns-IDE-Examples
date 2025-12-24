@@ -1,40 +1,37 @@
-/*
-  Fade
+// Example: Fade
+// Last update: Dec 23, 2025
+//
+// DESCRIPTION
+// This example shows how to fade an LED on pin 9 using the analogWrite() function.
+// Connect a standard LED in series with a 220Ohm resistor between D9 and GND.
+// Take note of the LED polarity! Flat side or short lead is negative.
 
-  This example shows how to fade an LED on pin 9 using the analogWrite()
-  function.
+// The analogWrite() function uses PWM, so if you want to change the pin you're
+// using, be sure to use another PWM capable pin. On most Arduino, the PWM pins
+// are identified with a "~" sign, like ~3, ~5, ~6, ~9, ~10 and ~11.
 
-  The analogWrite() function uses PWM, so if you want to change the pin you're
-  using, be sure to use another PWM capable pin. On most Arduino, the PWM pins
-  are identified with a "~" sign, like ~3, ~5, ~6, ~9, ~10 and ~11.
+int led = 9;         // The PWM pin the LED is attached to
+int brightness = 0;  // How bright the LED is
+int fadeAmount = 5;  // How many points to fade the LED by
 
-  This example code is in the public domain.
-
-  https://docs.arduino.cc/built-in-examples/basics/Fade/
-*/
-
-int led = 9;         // the PWM pin the LED is attached to
-int brightness = 0;  // how bright the LED is
-int fadeAmount = 5;  // how many points to fade the LED by
-
-// the setup routine runs once when you press reset:
+// The setup routine runs once when you press reset:
 void setup() {
-  // declare pin 9 to be an output:
+  // Declare pin 9 to be an output:
   pinMode(led, OUTPUT);
 }
 
-// the loop routine runs over and over again forever:
+// The loop routine runs over and over again forever:
 void loop() {
-  // set the brightness of pin 9:
+  // Set the brightness of pin 9:
   analogWrite(led, brightness);
 
-  // change the brightness for next time through the loop:
+  // Change the brightness for next time through the loop:
   brightness = brightness + fadeAmount;
 
-  // reverse the direction of the fading at the ends of the fade:
+  // Reverse the direction of the fading at the ends of the fade:
   if (brightness <= 0 || brightness >= 255) {
     fadeAmount = -fadeAmount;
   }
-  // wait for 30 milliseconds to see the dimming effect
+  // Wait for 30 milliseconds to see the dimming effect
   delay(30);
 }
